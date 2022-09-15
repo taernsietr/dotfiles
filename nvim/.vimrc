@@ -8,6 +8,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'                   " finder (req: popup, plenary)
 Plug 'shinchu/lightline-gruvbox.vim'                   " lightline theme (req: lightline)
 Plug 'neovim/nvim-lspconfig'
+Plug 'ellisonleao/glow.nvim'
 call plug#end()
 
 " General Settings ###############################################################################
