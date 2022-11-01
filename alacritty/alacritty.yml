@@ -66,6 +66,7 @@ colors:
     focused_match:
       foreground: '#806060'
       background: '#ffbb00'
+  footer:
     bar:
       background: '#806060'
       foreground: '#ffbb00'

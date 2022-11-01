@@ -9,6 +9,9 @@ Plug 'nvim-telescope/telescope.nvim'                   " finder (req: popup, ple
 Plug 'shinchu/lightline-gruvbox.vim'                   " lightline theme (req: lightline)
 Plug 'neovim/nvim-lspconfig'
 Plug 'ellisonleao/glow.nvim'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 
 " General Settings ###############################################################################
@@ -55,17 +58,16 @@ lua << EOF
 
 require('telescope').setup()
 
-require'lspconfig'.arduino_language_server.setup{}
 require'lspconfig'.bashls.setup{}
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.emmet_ls.setup{}
-require'lspconfig'.eslint.setup{}
+
 require'lspconfig'.html.setup{}
-require'lspconfig'.java_language_server.setup{}
+require'lspconfig'.cssls.setup{}
 require'lspconfig'.jsonls.setup{}
+require'lspconfig'.tsserver.setup{}
+
 require'lspconfig'.pyright.setup{}
+
 require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.sqlls.setup{}
 
 EOF
 
