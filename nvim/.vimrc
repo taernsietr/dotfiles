@@ -37,6 +37,13 @@ set timeoutlen=200
 set ttimeoutlen=200
 set updatetime=50
 
+" Add these to the lua files later
+set foldminlines=2
+set foldnestmax=5
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable
+
 filetype on
 filetype plugin on
 filetype indent on
@@ -60,19 +67,27 @@ lua << EOF
 require('telescope').setup()
 
 require'lspconfig'.bashls.setup{}
-
 require'lspconfig'.html.setup{}
 require'lspconfig'.cssls.setup{}
 require'lspconfig'.jsonls.setup{}
-require'lspconfig'.tsserver.setup{}
-
 require'lspconfig'.pyright.setup{}
-
 require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.svelte.setup{}
+require'lspconfig'.tsserver.setup{
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    root_dir = function() return vim.loop.cwd() end
+}
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
 
 EOF
 
-" Keymaps ########################################################################################
+" Keymaps ##############################################################################
 let mapleader = " "
 
 " Add lines above or below current line without switching mode
