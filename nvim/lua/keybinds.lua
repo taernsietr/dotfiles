@@ -44,8 +44,9 @@ vim.keymap.set("n", "<Leader>h", ":sp<CR>")
 vim.keymap.set("n", "<F5> :!", "%:p<CR>")
 
 -- Telescope
-vim.keymap.set("n", "<Leader>ff <CMD>Telescope", "find_files<CR>")
-vim.keymap.set("n", "<Leader>fg <CMD>Telescope", "live_grep<CR>")
-vim.keymap.set("n", "<Leader>fb <CMD>Telescope", "buffers<CR>")
-vim.keymap.set("n", "<Leader>fh <CMD>Telescope", "help_tags<CR>")
+local builtin = require('telescope.builtin')
+vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<Leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<Leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<Leader>fh", builtin.help_tags, {})
 

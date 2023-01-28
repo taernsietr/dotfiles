@@ -18,4 +18,5 @@ require('gruvbox').setup({
 })
 
 vim.cmd('colorscheme gruvbox')
-vim.cmd('AirlineTheme base16_gruvbox_dark_hard')
+vim.g.airline_theme = 'base16_gruvbox_dark_hard'
+-- vim.cmd('AirlineTheme base16_gruvbox_dark_hard')
