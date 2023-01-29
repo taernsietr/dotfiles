@@ -1,6 +1,6 @@
 require("plug")
 require("settings")
-require("lsp")
+require("lspzero")
 require("treesitter")
 require("keybinds")
 require("colors")

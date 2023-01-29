@@ -7,6 +7,24 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ellisonleao/gruvbox.nvim' 
 
+-- Mason (package manager)
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
+-- lsp-zero: Autocompletion Engine
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-nvim-lua'
+
+-- lsp-zero: Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
+
+Plug('VonHeikemen/lsp-zero.nvim', {branch = 'v1.x'})
+
 -- Other plugins
 Plug 'airblade/vim-gitgutter'                 -- displays git diff column
 Plug 'ellisonleao/glow.nvim'                  -- TUI markdown previewer
