@@ -30,6 +30,9 @@ vim.keymap.set("n", "<Leader>a", "ggVG")
 -- Copy to system clipboard
 vim.keymap.set("v", "<Leader>c", "\"+y")
 
+-- Convert C-c to Escape (for stuff like multiline I
+vim.keymap.set("i", "C-c", "<Esc>")
+
 -- Navigate through buffers (next, previous, close)
 vim.keymap.set("n", "<Leader>n", ":bn<CR>")
 vim.keymap.set("n", "<Leader>p", ":bp<CR>")
