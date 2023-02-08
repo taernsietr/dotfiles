@@ -13,9 +13,10 @@ theme:
   selected: "235, 219, 178"               # #EBDBB2 fg
   text: "146, 131, 116"                   # #928374 dark gray
   header: "235, 219, 178"                 # #EBDBB2 fg
+
 behavior:
   seek_milliseconds: 5000
-  volume_increment: 5
+  volume_increment: 10
   # The lower the number the higher the "frames per second". You can decrease this number so that the audio visualisation is smoother but this can be expensive!
   tick_rate_milliseconds: 250
   # Enable text emphasis (typically italic/bold text styling). Disabling this might be important if the terminal config is otherwise restricted and rendering text escapes interferes with the UI.
@@ -24,16 +25,18 @@ behavior:
   show_loading_indicator: true
   # Disables the responsive layout that makes the search bar smaller on bigger
   # screens and enforces a wide search bar
-  enforce_wide_search_bar: true 
+  enforce_wide_search_bar: false
   # Determines the text icon to display next to "liked" Spotify items, such as
   # liked songs and albums, or followed artists. Can be any length string.
   # These icons require a patched nerd font.
-  liked_icon: ☭ 
-  shuffle_icon: ☢
-  repeat_track_icon: ⥀
-  repeat_context_icon: ↺
+  liked_icon: ♥
+  shuffle_icon: 🔀
+  repeat_track_icon: 🔂
+  repeat_context_icon: 🔁
   playing_icon: ▶
   paused_icon: ⏸
+  # Sets the window title to "spt - Spotify TUI" via ANSI escape code.
+  set_window_title: true
 
 keybindings:
   # Key stroke can be used if it only uses two keys:
