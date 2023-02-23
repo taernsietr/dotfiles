@@ -9,6 +9,7 @@ set.expandtab = true
 set.foldminlines = 2
 set.foldnestmax = 5
 set.foldmethod = 'expr'
+set.foldenable = false
 set.hlsearch = false
 set.inccommand = 'split'
 set.number = true

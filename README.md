@@ -1,4 +1,7 @@
 # dotfiles
-Personal dotfiles
+My personal dotfiles
 
-Reminder: add standalone stuff like config files for btop, spt, etc
+### Reminders:
+- add remaining config files
+- add settings for keyboard repeat speed and rate, independent from gnome
+  (xorg?)
