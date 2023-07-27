@@ -28,6 +28,7 @@ Plug('VonHeikemen/lsp-zero.nvim', {branch = 'v1.x'})
 -- Other plugins
 Plug 'airblade/vim-gitgutter'                 -- displays git diff column
 Plug 'ellisonleao/glow.nvim'                  -- TUI markdown previewer
+Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && yarn install' })
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'          -- finder (req: popup, plenary)

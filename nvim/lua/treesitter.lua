@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { 
+    ensure_installed = {
         "c",
         "lua",
         "vim",
@@ -36,4 +36,5 @@ require'nvim-treesitter.configs'.setup {
       disable = {},
       additional_vim_regex_highlighting = false,
     },
-} 
+}
+
