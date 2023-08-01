@@ -205,7 +205,7 @@ exec nitrogen --restore
 bindsym $mod+x exec i3lock -c 00000
 
 # Gaps
-gaps inner 10
+gaps inner 8
 
 for_window [class=".*"] border pixel 0
 
