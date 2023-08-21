@@ -113,6 +113,7 @@ for_window [class=".*"] border pixel 0
 exec_always picom -b
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always setxkbmap br
+exec_always xset r rate 150 30
 exec nitrogen --restore
 
 # Multi-screen screenshots with scrot (from u/brainlessdeveloper @ Reddit)
