@@ -3,7 +3,7 @@ require('gruvbox').setup({
   undercurl = true,
   underline = true,
   bold = true,
-  italic = { 
+  italic = {
       strings = true,
       comments = true,
       keywords = true,
