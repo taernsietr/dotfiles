@@ -31,4 +31,3 @@ vim.cmd('filetype plugin on')
 vim.diagnostic.config({
   virtual_text = true
 })
-

@@ -27,7 +27,6 @@ Plug('VonHeikemen/lsp-zero.nvim', { branch = 'v3.x' })
 
 -- Other plugins
 Plug 'airblade/vim-gitgutter'                 -- displays git diff column
-Plug 'ellisonleao/glow.nvim'                  -- TUI markdown previewer
 Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && yarn install' })
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
