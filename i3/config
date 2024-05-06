@@ -1,7 +1,13 @@
-font pango:monospace 8
-exec --no-startup-id dex --autostart --environment i3
+gaps inner 8
+for_window [class=".*"] border pixel 0
+font pango:DejaVu Sans 8
+
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
+exec_always picom -b
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always setxkbmap br
+exec_always xset r rate 200 30
+exec nitrogen --restore
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -16,6 +22,15 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty -e tmux 
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show run
+
+# Multi-screen screenshots with scrot (from u/brainlessdeveloper @ Reddit)
+bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
+
+# OSX-like area selection screenshots (from u/brainlessdeveloper @ Reddit) 
+bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+
+# Lockscreen
+bindsym $mod+x exec i3lock -c 00000
 
 # change focus
 bindsym $mod+h focus left
@@ -106,22 +121,4 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
-gaps inner 8
-for_window [class=".*"] border pixel 0
-
-exec_always picom -b
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always setxkbmap br
-exec_always xset r rate 200 30
-exec nitrogen --restore
-
-# Multi-screen screenshots with scrot (from u/brainlessdeveloper @ Reddit)
-bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
-
-# OSX-like area selection screenshots (from u/brainlessdeveloper @ Reddit) 
-bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
-
-# Lockscreen
-bindsym $mod+x exec i3lock -c 00000
 

@@ -5,4 +5,3 @@ setlocal wrap
 setlocal linebreak
 setlocal listchars+=precedes:<,extends:>
 
-nnoremap <Leader>1 :Glow %<CR>
