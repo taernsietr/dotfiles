@@ -5,8 +5,8 @@ local km = vim.keymap
 vim.g.mapleader = " "
 
 -- Add lines above or below current line without switching mode
-km.set("n", "oo", "m`o<Esc>``")
-km.set("n", "OO", "m`O<Esc>``")
+km.set("n", "oo", "m`o<Esc>``j")
+km.set("n", "OO", "m`O<Esc>``k")
 
 -- Moving lines up or down with Alt + J/K
 km.set("n", "<A-j>", ":m .+1<CR>==")
@@ -27,14 +27,11 @@ km.set("n", "n", "nzzzv")
 km.set("n", "N", "Nzzzv")
 km.set("n", "J", "mzJ`z")
 
--- Select all buffer contents (similar to Ctrl+A)
-km.set("n", "<Leader>a", "ggVG")
-
 -- Copy to system clipboard
 km.set("v", "<Leader>c", "\"+y")
 
--- Convert C-c to Escape (for stuff like multiline I
-km.set("i", "C-c", "<Esc>")
+-- Convert C-c to Escape (for stuff like multiline I)
+km.set("i", "<A-c>", "<Esc>")
 
 -- Navigate through buffers (next, previous, close)
 km.set("n", "<Leader>n", ":bn<CR>")
@@ -46,9 +43,6 @@ km.set("n", "<Leader>d", ":bd<CR>")
 km.set("n", "<Leader>v", ":vsp<CR>")
 km.set("n", "<Leader>h", ":sp<CR>")
 
--- Run current buffer directly
-km.set("n", "<F5> :!", "%:p<CR>")
-
 -- Telescope
 km.set("n", "<Leader>ff", builtin.find_files, {})
 km.set("n", "<Leader>fg", builtin.live_grep, {})
@@ -57,3 +51,4 @@ km.set("n", "<Leader>fh", builtin.help_tags, {})
 
 -- LSP Diagnostics
 km.set("n", "<Leader>i", vim.diagnostic.open_float)
+

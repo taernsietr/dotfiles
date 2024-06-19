@@ -15,10 +15,10 @@ set.inccommand = 'split'
 set.number = true
 set.relativenumber = true
 set.scrolloff = 8
-set.shiftwidth = 4
+set.shiftwidth = 2
 set.showmatch = true
 set.showmode = false
-set.tabstop = 4
+set.tabstop = 2
 set.termguicolors = true
 set.timeoutlen = 200
 set.ttimeoutlen = 200
@@ -29,5 +29,5 @@ vim.cmd('set foldexpr=nvim_treesitter#foldexpr()') -- how to put this to Lua?
 vim.cmd('filetype plugin on')
 
 vim.diagnostic.config({
-  virtual_text = true
+    virtual_text = true
 })

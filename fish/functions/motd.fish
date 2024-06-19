@@ -1,3 +1,3 @@
 function motd
-  fortune | cowsay -f tux | lolcat
+  echo "Hello $USER!" | cowsay -f tux | lolcat
 end
