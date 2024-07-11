@@ -2,13 +2,13 @@
 
 local set = vim.opt
 
-set.autoindent = false
-set.backup = false
-set.completeopt = {'menuone', 'preview', 'noinsert', 'noselect'}
+set.autoindent = true
+set.completeopt = {'menu', 'preview', 'noinsert'}
+set.cursorline = true
 set.expandtab = true
+set.foldmethod = 'expr'
 set.foldminlines = 2
 set.foldnestmax = 5
-set.foldmethod = 'expr'
 set.foldenable = false
 set.hlsearch = false
 set.inccommand = 'split'
@@ -25,9 +25,10 @@ set.ttimeoutlen = 200
 set.updatetime = 50
 set.wrap = false
 
-vim.cmd('set foldexpr=nvim_treesitter#foldexpr()') -- how to put this to Lua?
-vim.cmd('filetype plugin on')
-
 vim.diagnostic.config({
     virtual_text = true
 })
+
+vim.cmd('set foldexpr=nvim_treesitter#foldexpr()') -- how to put this to Lua?
+vim.cmd('filetype plugin on')
+

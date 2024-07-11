@@ -1,4 +1,5 @@
-set $refresh_i3status killall -SIGUSR1 i3status
+set $exec exec --no-startup-id
+set $clear_dunst exec --no-startup-id dunstctl close-all
 set $ws1 1: α
 set $ws2 2: β
 set $ws3 3: γ
@@ -7,21 +8,22 @@ set $mod Mod4
 floating_modifier $mod
 
 # Multi-screen screenshots with scrot; Shift does OSX-area selection (from u/brainlessdeveloper @ Reddit)
-bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
-bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
-bindsym $mod+Return exec ~/.config/scripts/alacritty
-bindsym $mod+Delete exec ~/.config/scripts/lockscreen
-bindsym $mod+d exec rofi -show run
-bindsym $mod+w exec ~/.config/scripts/switch_audio
-bindsym $mod+p exec ~/.config/scripts/toggle_dunst
-bindsym $mod+a exec dunstctl context
-bindsym $mod+c exec dunstctl close
-bindsym $mod+Shift+c exec dunstctl close-all
-bindsym $mod+Shift+b exec polybar-msg cmd toggle
-bindsym $mod+Shift+p exec poweroff
+bindsym --release Print $exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
+bindsym --release Shift+Print $exec scrot -s --line opacity=0 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
+bindsym $mod+Return $exec ~/.config/scripts/alacritty
+bindsym $mod+Delete $exec ~/.config/scripts/lockscreen
+bindsym $mod+d $exec rofi -show run
+bindsym $mod+w $exec ~/.config/scripts/switch_audio
+bindsym $mod+p $exec ~/.config/scripts/toggle_dunst
+bindsym $mod+a $exec dunstctl context
+bindsym $mod+c $exec dunstctl close
+bindsym $mod+Shift+c $clear_dunst
+bindsym $mod+Shift+b $exec polybar-msg cmd toggle
+bindsym $mod+Shift+p mode "power"
+bindsym $mod+Shift+g gaps inner all toggle 10
 bindsym $mod+q kill
-bindsym $mod+Shift+a mode "admin"; exec notify-send "[ADMIN MODE]" "u: refresh i3\nr: restart i3\ng: game mode"
-bindsym $mod+Shift+r mode "resize"; exec notify-send "[RESIZE MODE]" "hjkl: resize"
+bindsym $mod+Shift+a mode "admin"; $exec notify-send "$ ADMIN MODE" "[u] Refresh i3\n[r] Restart i3\n[g] Game mode (WIP)"
+bindsym $mod+Shift+r mode "resize"; $exec notify-send "$ RESIZE MODE" "[hjkl]: resize"
 bindsym $mod+f fullscreen toggle
 bindsym $mod+e layout toggle split
 bindsym $mod+space floating toggle
@@ -41,40 +43,58 @@ bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume $exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume $exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute $exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute $exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay $exec playerctl play-pause
+bindsym XF86AudioPause $exec playerctl play-pause
+bindsym XF86AudioNext $exec playerctl next
+bindsym XF86AudioPrev $exec playerctl previous
 
 mode "admin" {
-    bindsym u reload; exec notify-send "[RELOAD]" "Reloaded i3 config"
-    bindsym r restart; exec notify-send "[RESTART]" "Restarted i3"
-    bindsym g exec notify-send "[GAME MODE]" "Activating game mode"; exec --no-startup-id ~/.config/scripts/game_mode
-    bindsym Return mode "default"; exec dunstctl close-all 
-    bindsym Escape mode "default"; exec dunstctl close-all 
+  bindsym u reload; $exec notify-send "[RELOAD]" "Reloaded i3 config"
+  bindsym r restart; $exec notify-send "[RESTART]" "Restarted i3"
+  bindsym g $exec notify-send "[GAME MODE]" "Activating game mode"; $exec ~/.config/scripts/game_mode
+  bindsym q mode "default"; $clear_dunst 
+  bindsym Return mode "default"; $clear_dunst 
+  bindsym Escape mode "default"; $clear_dunst 
 }
 
 mode "resize" {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
-    bindsym Return mode "default"; exec dunstctl close-all 
-    bindsym Escape mode "default"; exec dunstctl close-all 
-    bindsym $mod+Shift+r mode "default"; exec dunstctl close-all 
+  bindsym h resize shrink width 5 px or 5 ppt
+  bindsym j resize grow height 5 px or 5 ppt
+  bindsym k resize shrink height 5 px or 5 ppt
+  bindsym l resize grow width 5 px or 5 ppt
+  bindsym Shift+h resize shrink width 10 px or 10 ppt
+  bindsym Shift+j resize grow height 10 px or 10 ppt
+  bindsym Shift+k resize shrink height 10 px or 10 ppt
+  bindsym Shift+l resize grow width 10 px or 10 ppt
+  bindsym q mode "default"; $clear_dunst 
+  bindsym Return mode "default"; $clear_dunst 
+  bindsym Escape mode "default"; $clear_dunst 
 }
 
-gaps inner 8
+mode "power" {
+  bindsym s $exec poweroff
+  bindsym r $exec reboot 
+  bindsym q mode "default"; $clear_dunst 
+  bindsym Return mode "default"; $clear_dunst 
+  bindsym Escape mode "default"; $clear_dunst 
+}
+
+gaps inner 10
+smart_gaps on
 default_border pixel 0
 no_focus [window_role="pop-up"]
 font pango:Roboto Nerd Font 12
 workspace_auto_back_and_forth yes
 
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/scripts/lockscreen --nofork
-exec_always --no-startup-id setxkbmap br
-exec_always --no-startup-id xset r rate 200 30
-exec_always --no-startup-id picom -b
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id nitrogen --restore
-exec_always --no-startup-id /usr/lib/kdeconnectd
+exec_always xss-lock --transfer-sleep-lock -- ~/.config/scripts/lockscreen --nofork
+exec_always /usr/lib/kdeconnectd
+exec_always $HOME/.config/polybar/launch.sh
+exec_always nitrogen --restore
+exec_always picom -b
+exec_always xset r rate 200 30
+exec_always setxkbmap br
 

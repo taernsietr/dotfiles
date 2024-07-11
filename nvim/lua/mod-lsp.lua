@@ -8,7 +8,6 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 require("luasnip.loaders.from_vscode").lazy_load()
-
 cmp.setup({
   sources = cmp.config.sources ({
     { name = 'nvim_lsp' },
