@@ -1,54 +1,55 @@
 local builtin = require('telescope.builtin')
-local km = vim.keymap
+local set = vim.keymap.set
 
 -- Keymaps #############################################################################
 vim.g.mapleader = " "
 
 -- Add lines above or below current line without switching mode
-km.set("n", "oo", "m`o<Esc>``j")
-km.set("n", "OO", "m`O<Esc>``k")
+set("n", "oo", "m`o<Esc>``j")
+set("n", "OO", "m`O<Esc>``k")
 
 -- Moving lines up or down with Alt + J/K
-km.set("n", "<A-j>", ":m .+1<CR>==")
-km.set("n", "<A-k>", ":m .-2<CR>==")
-km.set("i", "<A-j> <Esc>:m", ".+1<CR>==gi")
-km.set("i", "<A-k> <Esc>:m", ".-2<CR>==gi")
-km.set("v", "<A-j> :m", "'>+1<CR>gv=gv")
-km.set("v", "<A-k> :m", "'<-2<CR>gv=gv")
+set("n", "<A-j>", ":m .+1<CR>==")
+set("n", "<A-k>", ":m .-2<CR>==")
+set("i", "<A-j> <Esc>:m", ".+1<CR>==gi")
+set("i", "<A-k> <Esc>:m", ".-2<CR>==gi")
+set("v", "<A-j> :m", "'>+1<CR>gv=gv")
+set("v", "<A-k> :m", "'<-2<CR>gv=gv")
 
 -- Make these symbols create break points for better undo (Primeagen)
-km.set("i", ",", ",<C-g>u")
-km.set("i", ".", ".<C-g>u")
-km.set("i", "!", "!<C-g>u")
-km.set("i", "?", "?<C-g>u")
+set("i", ",", ",<C-g>u")
+set("i", ".", ".<C-g>u")
+set("i", "!", "!<C-g>u")
+set("i", "?", "?<C-g>u")
 
 -- Center next search results & line joins (Primeagen)
-km.set("n", "n", "nzzzv")
-km.set("n", "N", "Nzzzv")
-km.set("n", "J", "mzJ`z")
+set("n", "n", "nzzzv")
+set("n", "N", "Nzzzv")
+set("n", "J", "mzJ`z")
 
 -- Copy to system clipboard
-km.set("v", "<Leader>c", "\"+y")
+set("v", "<Leader>c", "\"+y")
 
 -- Convert C-c to Escape (for stuff like multiline I)
-km.set("i", "<A-c>", "<Esc>")
+set("i", "<A-c>", "<Esc>")
+set("i", "<C-c>", "<Esc>")
 
 -- Navigate through buffers (next, previous, close)
-km.set("n", "<Leader>n", ":bn<CR>")
-km.set("n", "<Leader>p", ":bp<CR>")
-km.set("n", "<Leader>d", ":bd<CR>")
+set("n", "<Leader>n", ":bn<CR>")
+set("n", "<Leader>p", ":bp<CR>")
+set("n", "<Leader>d", ":bd<CR>")
 
 -- Split panes
 -- Reminder: C-w hjkl switches directionally between panes
-km.set("n", "<Leader>v", ":vsp<CR>")
-km.set("n", "<Leader>h", ":sp<CR>")
+set("n", "<Leader>v", ":vsp<CR>")
+set("n", "<Leader>h", ":sp<CR>")
 
 -- Telescope
-km.set("n", "<Leader>ff", builtin.find_files, {})
-km.set("n", "<Leader>fg", builtin.live_grep, {})
-km.set("n", "<Leader>fb", builtin.buffers, {})
-km.set("n", "<Leader>fh", builtin.help_tags, {})
+set("n", "<Leader>ff", builtin.find_files, {})
+set("n", "<Leader>fg", builtin.live_grep, {})
+set("n", "<Leader>fb", builtin.buffers, {})
+set("n", "<Leader>fh", builtin.help_tags, {})
 
 -- LSP Diagnostics
-km.set("n", "<Leader>i", vim.diagnostic.open_float)
+set("n", "<Leader>i", vim.diagnostic.open_float)
 
