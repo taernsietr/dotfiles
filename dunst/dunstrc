@@ -1,5 +1,5 @@
 [global]
-font = "Sans 12"
+font = "Sans 8"
 format = "<b>%s</b>\n%b"
 show_age_threshold = -1
 dmenu = "/usr/bin/rofi -dmenu -p dunst"

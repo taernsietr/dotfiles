@@ -74,7 +74,9 @@ require("mason-lspconfig").setup({
               features = "all",
             },
             diagnostics = {
-              disabled = { "inactive-code", "unlinked-file" },
+              enable = true,
+              enableExperimental = true,
+              disabled = { "inactive-code", "unlinked-file", "unresolved-proc-macro" },
             },
             imports = {
               granularity = {
@@ -84,7 +86,7 @@ require("mason-lspconfig").setup({
             procMacro = {
               enable = true,
               ignored = {
-                leptos_macro = { "component", "server" },
+                -- leptos_macro = { "server" },
               },
             },
             hover = {

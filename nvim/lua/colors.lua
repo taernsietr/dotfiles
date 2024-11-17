@@ -1,5 +1,5 @@
 -- Gruvbox
-require('gruvbox').setup({
+require('biscuit').setup({
   undercurl = true,
   underline = true,
   bold = true,
@@ -18,8 +18,20 @@ require('gruvbox').setup({
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,
-  transparent_mode = true,
+  transparent_mode = true
 })
 
-vim.cmd('colorscheme gruvbox')
+-- augroup user_colors
+--   autocmd!
+--   autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+-- augroup END
+
+local transparency = vim.api.nvim_create_autocmd({"ColorScheme"}, {
+  pattern = { "*" },
+  command = "highlight Normal ctermbg=NONE guibg=NONE"
+})
+
+-- vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme biscuit')
 vim.g.airline_theme = 'base16_gruvbox_dark_hard'
+

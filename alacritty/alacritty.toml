@@ -1,10 +1,7 @@
-import = [
+general.import = [
     "~/.config/alacritty/keybinds.toml",
     "~/.config/alacritty/colors.toml"
 ]
-
-# [env]
-# TERM = "xterm-256color"
 
 [window]
 decorations = "none"
@@ -15,11 +12,11 @@ padding = { x = 0, y = 0 }
 startup_mode = "Maximized"
 
 [font]
-size = 12.0
-normal      = { family = "Source Code Pro", style = "Medium" }
-bold        = { family = "Source Code Pro", style = "Bold" }
-bold_italic = { family = "Source Code Pro", style = "Bold Italic" }
-italic      = { family = "Source Code Pro", style = "Italic" }
+size = 8.0
+normal      = { family = "NotoMono Nerd Font Mono", style = "Medium" }
+bold        = { family = "NotoMono Nerd Font Mono", style = "Bold" }
+bold_italic = { family = "NotoMono Nerd Font Mono", style = "Bold Italic" }
+italic      = { family = "NotoMono Nerd Font Mono", style = "Italic" }
 
 [selection]
 save_to_clipboard = true

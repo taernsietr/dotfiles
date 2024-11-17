@@ -10,6 +10,7 @@ Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'ellisonleao/gruvbox.nvim'
+Plug 'Biscuit-Theme/nvim'
 
 -- lsp-zero: Autocompletion Engine
 Plug 'hrsh7th/nvim-cmp'                       -- completion
