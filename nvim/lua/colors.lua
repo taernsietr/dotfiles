@@ -21,17 +21,11 @@ require('biscuit').setup({
   transparent_mode = true
 })
 
--- augroup user_colors
---   autocmd!
---   autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
--- augroup END
-
 local transparency = vim.api.nvim_create_autocmd({"ColorScheme"}, {
   pattern = { "*" },
   command = "highlight Normal ctermbg=NONE guibg=NONE"
 })
 
--- vim.cmd('colorscheme gruvbox')
 vim.cmd('colorscheme biscuit')
 vim.g.airline_theme = 'base16_gruvbox_dark_hard'
 

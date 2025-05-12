@@ -1,1 +1,17 @@
+configuration {
+  font: "mono 16";
+  show-icons: "true";
+  terminal: "alacritty";
+  disable-history: "False";
+  sort: "True";
+  sorting-method: "fzf";
+  eh: "1";
+  parse-hosts: "True";
+  parse-known-hosts: "True";
+  matching: "fuzzy";
+  dpi: "1.75";
+  steal-focus: "True";
+}
+
 @theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+

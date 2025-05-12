@@ -5,7 +5,8 @@ include ./workspaces.conf
 include ./startup.conf
 
 set $exec exec --no-startup-id
-set $clear_dunst exec --no-startup-id dunstctl close-all
+set $execa exec_always --no-startup-id
+set $clear_dunst $exec dunstctl close-all
 set $ws1 1: α
 set $ws2 2: β
 set $ws3 3: γ

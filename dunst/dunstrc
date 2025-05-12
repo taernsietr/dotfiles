@@ -1,15 +1,15 @@
 [global]
-font = "Sans 8"
+font = "Sans 12"
 format = "<b>%s</b>\n%b"
 show_age_threshold = -1
 dmenu = "/usr/bin/rofi -dmenu -p dunst"
 mouse_left_click = "context, close_current"
 mouse_right_click = "close_current"
 
-origin = top-center
+origin = bottom-right
 width = (200,600)
 height = (60,240)
-offset = 0x120
+offset = 300x300
 padding = 32
 horizontal_padding = 32 
 frame_width = 0
